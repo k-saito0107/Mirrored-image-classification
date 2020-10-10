@@ -20,8 +20,8 @@ def train(model, num_epochs,train_loader, test_loader):
 
     for epoch in range(1, num_epochs+1):
         if epoch == 1:
-            if os.path.exists('/kw_resources/Mirrored-image-detection/weights/model.pth'):
-                checkpoint = torch.load('/kw_resources/Mirrored-image-detection/weights/model.pth')
+            if os.path.exists('/kw_resources/Mirrored-image-classification/weights/model.pth'):
+                checkpoint = torch.load('/kw_resources/Mirrored-image-classification/weights/model.pth')
                 checkpoint = checkpoint.to(device)
                 model.load_state_dict(checkpoint['model_state_dict'])
                 optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
@@ -71,7 +71,7 @@ def train(model, num_epochs,train_loader, test_loader):
             log_epoch = {'epoch' : epoch, 'train_loss' : train_loss, 'val_loss' : val_loss,'val_acc' : val_acc}
             logs.append(log_epoch)
             df = pd.DataFrame(logs)
-            df.to_csv('/kw_resources/Mirrored-image-detection/log_out.csv')
+            df.to_csv('/kw_resources/Mirrored-image-classification/log_out.csv')
         
         if epoch % 10 == 0 and epoch != 0:
             print('---------------------------------------------------------------')
@@ -81,7 +81,7 @@ def train(model, num_epochs,train_loader, test_loader):
                 'optimizer_state_dict':optimizer.state_dict(),
                 'loss':t_loss,
                 'logs':logs
-            },'/kw_resources/Mirrored-image-detection/weights/model.pth')
+            },'/kw_resources/Mirrored-image-classification/weights/model.pth')
             
         
     

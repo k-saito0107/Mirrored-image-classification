@@ -34,12 +34,12 @@ val_transform = transforms.Compose([
 
 
 train_images=ImageFolder(
-    '/kw_resources/Mirrored-image-detection/data/train/',
+    '/kw_resources/Mirrored-image-classification/data/train/',
     transform=train_transform
 )
 
 test_images=ImageFolder(
-    '/kw_resources/Mirrored-image-detection/data/test/',
+    '/kw_resources/Mirrored-image-classification/data/test/',
     transform=val_transform
 )
 
