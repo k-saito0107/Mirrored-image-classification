@@ -11,7 +11,7 @@ print(path)
 #データセットの作成
 
 from torchvision.datasets import ImageFolder
-from data_augumentation import Compose,  Scale, Resize
+from data_augumentation import Compose,  Resize
 
 
 mean = (0.5, 0.5, 0.5)
@@ -43,8 +43,8 @@ test_images=ImageFolder(
     transform=val_transform
 )
 
-train_loader=torch.utils.data.DataLoader(train_images,batch_size=batch_size,shuffle=True, num_workers=2)
-test_loader=torch.utils.data.DataLoader(test_images,batch_size=batch_size,shuffle=True, num_workers=2)
+train_loader=torch.utils.data.DataLoader(train_images,batch_size=batch_size,shuffle=True)
+test_loader=torch.utils.data.DataLoader(test_images,batch_size=batch_size,shuffle=True)
 
 
 from model import ResNet

@@ -28,7 +28,7 @@ class Resize():
         return re_img
 
 
-
+'''
 class Scale():
     def __init__(self, scale):
         self.scale = scale
@@ -76,7 +76,7 @@ class Scale():
             img.paste(img_original, (pad_width_left, pad_height_top))
 
         return img
-
+'''
 
 '''
 class RandomRotation():

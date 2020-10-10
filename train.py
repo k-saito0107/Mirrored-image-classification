@@ -15,7 +15,7 @@ def train(model, num_epochs,train_loader, test_loader):
         device = 'cpu'
     print(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+    optimizer = optim.SGD(model.parameters(), lr=0.0001, momentum=0.9)
     logs = []
 
     for epoch in range(1, num_epochs+1):
@@ -37,9 +37,9 @@ def train(model, num_epochs,train_loader, test_loader):
             img, label = data
             model.train()
             img , label = img.to(device), label.to(device)
-            optimizer.zero_grad()
             outputs = model(img)
             t_loss = criterion(outputs, label)
+            optimizer.zero_grad()
             t_loss.backward()
             optimizer.step()
         
