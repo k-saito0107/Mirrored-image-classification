@@ -38,6 +38,8 @@ def train(model, num_epochs,train_loader, test_loader):
             model.train()
             img , label = img.to(device), label.to(device)
             outputs = model(img)
+            print(outputs)
+            print(label)
             t_loss = criterion(outputs, label)
             optimizer.zero_grad()
             t_loss.backward()
