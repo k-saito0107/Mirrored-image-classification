@@ -32,7 +32,7 @@ def train(model, num_epochs,train_loader, test_loader):
             model.to(device)
             model = nn.DataParallel(model)
             
-
+        running_loss = 0
         for i, data in enumerate(train_loader, 0):
             img, label = data
             model.train()
@@ -40,11 +40,12 @@ def train(model, num_epochs,train_loader, test_loader):
             outputs = model(img)
             print(outputs)
             print(label)
-            t_loss = criterion(outputs, label)
+            loss = criterion(outputs, label)
+            running_loss += loss.item()
             optimizer.zero_grad()
-            t_loss.backward()
+            loss.backward()
             optimizer.step()
-        
+        train_loss = running_loss/len(train_loader)
         if epoch%10 == 0:
             if epoch == 0:
                 continue
@@ -66,7 +67,6 @@ def train(model, num_epochs,train_loader, test_loader):
                 #correct += torch.sum(predicted==v_label.data)
             val_acc=correct/total
             val_loss = running_loss/len(test_loader)
-            train_loss = t_loss.to('cpu')
             print('train_loss : {},  val_loss : {},  val_acc : {}'.format(train_loss, val_loss, val_acc))
 
             #ログを保存
