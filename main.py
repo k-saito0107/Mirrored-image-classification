@@ -18,7 +18,7 @@ mean = (0.5, 0.5, 0.5)
 std = (0.5, 0.5, 0.5)
 width = 960
 height = 512
-batch_size = 24
+batch_size = 16
 
 train_transform = transforms.Compose([
     Resize(width, height),
@@ -58,7 +58,7 @@ model = ResNet(in_ch, f_out, n_ch)
 
 #モデルの学習
 from train import train
-num_epoch = 200
+num_epoch = 150
 
 up_model = train(model, num_epoch, train_loader, test_loader)
 
