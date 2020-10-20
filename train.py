@@ -79,7 +79,7 @@ def train(model, num_epochs,train_loader, test_loader):
                 'epoch':epoch,
                 'model_state_dict':model.module.state_dict(),
                 'optimizer_state_dict':optimizer.state_dict(),
-                'loss':t_loss,
+                'loss':train_loss,
                 'logs':logs
             },'/kw_resources/Mirrored-image-classification/weights/model.pth')
             
